@@ -23,5 +23,12 @@ module tt_um_example (
 
   // List all unused inputs to prevent warnings
   wire _unused = &{ena, clk, rst_n, 1'b0};
-
+    assign ui_in[6:7]=sel;
+    case(sel)
+        2'b00:assign uo_out=ui_in[0:2]+ui_in[3:5];
+        2'b01:assign uo_out=ui_in[0:2]-ui_in[3:5];
+        2'b10:assign uo_out=ui_in[0:2]*ui_in[3:5];
+        2'b11:if (B!=0):
+              assign uo_out=ui_in[0:2]/ui_in[3:5];
+        
 endmodule
